@@ -1,0 +1,27 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(40deg, rgba(145, 7, 182, 1) 0%, rgba(18, 77, 191, 1) 57%, rgba(0, 212, 255, 1) 100%);
+}
+
+h1,
+p {
+    color: white;
+}
+
+.form-box {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    max-width: 500px;
+    background-color: white;
+    padding: 50px;
+    border-radius: 20px;
+}
