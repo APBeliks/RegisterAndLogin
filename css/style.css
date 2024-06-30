@@ -25,3 +25,11 @@ form {
     padding: 50px;
     border-radius: 20px;
 }
+
+.form-error {
+    color: red;
+}
+
+.success-msg {
+    color: green;
+}
