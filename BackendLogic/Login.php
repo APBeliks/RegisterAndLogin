@@ -23,13 +23,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "username" => $user->userName
         ];
         $_SESSION["login_data"] = $loginData;
-        header("Location: ../login.php");
+        header("Location: /login");
+        exit();
     } else {
         generateSessionForLoggedInUser($currentUser->id, $currentUser->userName);
-        header("Location: ../index.php?login=success");
+        header("Location: /?login=success");
+        exit();
     }
 } else {
-    header("Location: ../index.php");
+    header("Location: /");
+    exit();
 }
 
 function getLoginUserData(): User

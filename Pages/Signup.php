@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <?php require_once "SSR/SignUpForm.php"; ?>
+    <link rel="stylesheet" href="Css/style.css">
+    <?php require_once "SSR/SignupForm.php"; ?>
 </head>
 
 <body>
     <div class="container-fluid form-box">
         <h1 class="text-center">Sign Up</h1>
         <p>Please fill in this form to create an account.</p>
-        <form action="backend-logic/SignUp.php" method="post" class="mx-auto align-middle" onsubmit="return validateSignUpForm()">
+        <form action="/signup" method="post" class="mx-auto align-middle" onsubmit="return validateSignUpForm()">
             <div class="mb-3">
                 <label for="userName" class="form-label">User Name</label>
                 <?php
@@ -49,7 +49,7 @@
             ?>
         </form>
     </div>
-    <script src="js/SignUpValidation.js"></script>
+    <script src="Js/SignUpValidation.js"></script>
 
 </body>
 

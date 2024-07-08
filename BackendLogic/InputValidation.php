@@ -13,7 +13,7 @@ function checkSignUpErrors(object $pdo, object $user): array
     if (isEmailInvalid($user->email)) {
         $errors["invalid_email"] = "Given email is not valid";
     }
-    if (isUserNameTaken($pdo, $user->userName)) {
+    if (isUsernameTaken($pdo, $user->userName)) {
         $errors["username_taken"] = "Account with that username alerady exists";
     }
     if (isEmailRegistered($pdo, $user->email)) {
@@ -30,10 +30,10 @@ function checkLoginErrors(object $pdo, object $user): array
     if (isLoginInputEmpty($user->userName, $user->password,)) {
         $errors["empty_input"] = "Fill in all fields!";
     }
-    if (!isUserNameTaken($pdo, $user->userName)) {
+    if (!isUsernameTaken($pdo, $user->userName)) {
         $errors["username_taken"] = "There is no account with that username";
     }
-    if (isUserNameTaken($pdo, $user->userName) && isPasswordWrong($pdo, $user->password, $user->userName)) {
+    if (isUsernameTaken($pdo, $user->userName) && isPasswordWrong($pdo, $user->password, $user->userName)) {
         $errors["username_taken"] = "Wrong password";
     }
     return $errors;
@@ -41,31 +41,22 @@ function checkLoginErrors(object $pdo, object $user): array
 
 function isSignUpInputEmpty(string $username, string $password, string $email): bool
 {
-    if (empty($username) || empty($password) || empty($email)) {
-        return true;
-    }
-    return false;
+    return (empty($username) || empty($password) || empty($email)) ? true : false;
 }
 
 function isLoginInputEmpty(string $username, string $password): bool
 {
-    if (empty($username) || empty($password)) {
-        return true;
-    }
-    return false;
+    return (empty($username) || empty($password)) ? true : false;
 }
 
 function isEmailInvalid(string $email): bool
 {
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        return false; #condition is true if email is valid
-    }
-    return true;
+    return (filter_var($email, FILTER_VALIDATE_EMAIL)) ? false : true;
 }
 
-function isUserNameTaken(object $pdo, string $username): bool
+function isUsernameTaken(object $pdo, string $username): bool
 {
-    return (getUserName($pdo, $username)) ? true : false;
+    return (getUsername($pdo, $username)) ? true : false;
 }
 
 function isEmailRegistered(object $pdo, string $email): bool
@@ -75,11 +66,7 @@ function isEmailRegistered(object $pdo, string $email): bool
 
 function isPasswordWrong(object $pdo, string $password, string $username): bool
 {
-    if (!password_verify($password, getUserPassword($pdo, $username))) {
-        return true;
-    } else {
-        return false;
-    }
+    return (password_verify($password, getUserPassword($pdo, $username))) ? false : true;
 }
 
 
@@ -87,7 +74,7 @@ function isPasswordWrong(object $pdo, string $password, string $username): bool
 #TO DO
 #I probably should move those functions some whewre else, since they are querying data from db and not accualy validating anything -,- 
 
-function getUserName(object $pdo, string $username): array
+function getUsername(object $pdo, string $username): bool | array
 {
     $sql = "SELECT username FROM users WHERE username = :username;";
     $stmt = $pdo->connect()->prepare($sql);
@@ -102,7 +89,7 @@ function getUserName(object $pdo, string $username): array
     return $results;
 }
 
-function getEmail(object $pdo, string $email): array
+function getEmail(object $pdo, string $email): bool | array
 {
     $sql = "SELECT email FROM users WHERE email = :email;";
 
