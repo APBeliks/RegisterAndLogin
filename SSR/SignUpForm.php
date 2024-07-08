@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-require_once "backend-logic/SessionConfig.php";
 
 function signUpUserNameInput(): void
 {

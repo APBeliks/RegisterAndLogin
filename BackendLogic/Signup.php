@@ -8,7 +8,6 @@ use PDOStatement;
 
 require_once "DTO/User.php";
 require_once "DBHandler.php";
-require_once "SessionConfig.php";
 require_once "InputValidation.php";
 
 
@@ -26,13 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "email" => $user->email
         ];
         $_SESSION["signup_data"] = $signupData;
-        header("Location: ../SignUp.php");
+        header("Location: /signup");
     } else {
         createUser($pdo, $user);
-        header("Location: ../SignUp.php?signup=success");
+        header("Location: /signup?signup=success");
     }
 } else {
-    header("Location: ../");
+    header("Location: /");
 }
 
 

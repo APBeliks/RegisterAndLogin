@@ -14,7 +14,7 @@
     <div class="container-fluid form-box">
         <h1 class="text-center">Login</h1>
         <p>Please fill in this form to Login to your account.</p>
-        <form action="backend-logic/Login.php" method="post" class="mx-auto align-middle" onsubmit="return validateLoginForm()">
+        <form action="/login" method="post" class="mx-auto align-middle" onsubmit="return validateLoginForm()">
             <div class="mb-3">
                 <label for="userName" class="form-label">User Name</label>
                 <?php
@@ -27,7 +27,7 @@
                 <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" required>
                 <div class="form-text" id="passwordHelp">placeholder</div>
             </div>
-            <a class="btn btn-secondary" href="signup.php" role="button">Create Account</a>
+            <a class="btn btn-secondary" href="signup" role="button">Create Account</a>
             <button type="submit" class="btn btn-primary">Login</button>
             <?php
             displayLoginErrors();

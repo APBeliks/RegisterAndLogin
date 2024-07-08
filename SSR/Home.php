@@ -1,12 +1,12 @@
 <?php
 
 declare(strict_types=1);
-require_once "backend-logic/SessionConfig.php";
+require_once "BackendLogic/SessionConfig.php";
 
 
 function isLoggedIn(): bool
 {
-    return isset($_SESSION["user_id"]) ? true : false;
+    return isset($_SESSION["user_id"]);
 }
 
 function displayWelcomeMsg(): void
@@ -22,13 +22,13 @@ function displayWelcomeMsg(): void
 function displayButtons(): void
 {
     if (isLoggedIn()) {
-        echo '<form action="backend-logic/Logout.php" method="post" class="mx-auto align-middle">
+        echo '<form action="/logout" method="post" class="mx-auto align-middle">
                  <button type="submit" class="btn btn-primary">Logout</button>
             </form>';
     } else {
         echo '<form class="mx-auto align-middle">
-                <a class="btn btn-secondary" href="signup.php" role="button">Create Account</a>
-                <a class="btn btn-primary" href="login.php" role="button">Login</button>
+                <a class="btn btn-secondary" href="signup" role="button">Create Account</a>
+                <a class="btn btn-primary" href="login" role="button">Login</button>
               </form>';
     }
 }
